@@ -39,7 +39,6 @@ public class NovelsTest {
         // Act
         var categories = novelsPage.getCategoryDropdownOptions();
 
-
         // Assert
         Assertions.assertEquals(expectedNumberOfCategories, categories.size());
     }

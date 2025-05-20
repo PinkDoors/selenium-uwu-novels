@@ -49,7 +49,7 @@ public class LoginTest {
     }
 
     /*
-        A4 criteria.
+        A4, A7, A8 criteria.
     */
     @Test
     public void login_WrongEmail_UnsuccessfulLogin() {
