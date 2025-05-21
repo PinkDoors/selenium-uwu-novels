@@ -8,7 +8,7 @@ import org.openqa.selenium.interactions.Actions;
 public class HeaderComponent extends BaseComponent{
     private WebDriver driver;
 
-    private final By userMenuIcon = By.cssSelector("img.navUserMenuIcon");
+    private final By userMenuIcon = By.xpath("//div[contains(@class, 'navUserMenu')]//img[contains(@class, 'navUserMenuIcon')]");
     private final By usernameText = By.xpath("//div[contains(@class, 'navUserList')]//a[@class='userProfileData']//p");
     private final By logoutButton = By.xpath("//div[contains(@class, 'navUserList')]//a[contains(@class, navUserQuit) and contains(text(),'Выйти')]");
     private final By loginButton = By.xpath("//div[contains(@class, 'navUserList')]//a[@href='/login']");

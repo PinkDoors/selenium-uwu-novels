@@ -15,7 +15,7 @@ public class BaseComponent {
 
     public BaseComponent(WebDriver driver) {
         this.driver = driver;
-        this.wait = new WebDriverWait(driver, 10);
+        this.wait = new WebDriverWait(driver, 20);
     }
 
     public String getPageTitle() {
