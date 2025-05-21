@@ -1,17 +1,12 @@
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.remote.RemoteWebDriver;
 import components.LoginPage;
 
 import java.net.MalformedURLException;
-import java.net.URL;
+import java.util.UUID;
 
-public class LoginTest {
-    private WebDriver driver;
+public class LoginTest extends BaseTest {
     private LoginPage loginPage;
 
     private final String correctEmail = "daniil.butchenko@rambler.ru";
@@ -19,16 +14,7 @@ public class LoginTest {
 
     @BeforeEach
     public void setUp() throws MalformedURLException {
-        ChromeOptions options = new ChromeOptions();
-        this.driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), options);
         loginPage = new LoginPage(driver);
-    }
-
-    @AfterEach
-    public void close() {
-        if (this.driver != null) {
-            this.driver.quit();
-        }
     }
 
     /*
@@ -49,16 +35,16 @@ public class LoginTest {
     }
 
     /*
-        A4, A7, A8 criteria.
+        A4, A7, A8, A35 criteria.
     */
     @Test
     public void login_WrongEmail_UnsuccessfulLogin() {
         // Arrange
-        var wrongEmail = "abracadabra@gmail.com";
+        String randomEmail = "user_" + UUID.randomUUID() + "@example.com";
         var errorMessage = "Некорректная почта и/или пароль";
 
         // Act
-        loginPage.login(wrongEmail, correctPassword);
+        loginPage.login(randomEmail, correctPassword);
 
         // Assert
         var errorText = loginPage.getErrorText();

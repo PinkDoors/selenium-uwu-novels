@@ -1,31 +1,25 @@
 import components.MainPage;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class MainTest {
-    private WebDriver driver;
+public class MainTest extends BaseTest {
     private MainPage mainPage;
 
+    @Override
     @BeforeEach
-    public void setUp() throws MalformedURLException {
+    public void baseSetUp() throws MalformedURLException {
         ChromeOptions options = new ChromeOptions();
+        // A27 criteria.
+        options.addArguments("--disable-notifications");
+        options.addArguments("--incognito");
         this.driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), options);
         mainPage = new MainPage(driver);
-    }
-
-    @AfterEach
-    public void close() {
-        if (this.driver != null) {
-            this.driver.quit();
-        }
     }
 
     /*

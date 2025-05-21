@@ -1,36 +1,19 @@
 import components.HeaderComponent;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.remote.RemoteWebDriver;
 
-import java.net.MalformedURLException;
-import java.net.URL;
-
-public class HeaderTest {
-    private WebDriver driver;
+public class HeaderTest extends BaseTest {
     private HeaderComponent headerComponent;
 
     private final String correctEmail = "daniil.butchenko@rambler.ru";
     private final String correctPassword = "test12345";
 
     @BeforeEach
-    public void setUp() throws MalformedURLException {
-        ChromeOptions options = new ChromeOptions();
-        this.driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), options);
+    public void setUp() {
         headerComponent = new HeaderComponent(driver);
         driver.get("https://uwunovels.com/");
-    }
-
-    @AfterEach
-    public void close() {
-        if (this.driver != null) {
-            this.driver.quit();
-        }
     }
 
     /*
